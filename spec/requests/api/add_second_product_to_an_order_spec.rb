@@ -13,12 +13,12 @@ RSpec.describe 'PUT /api/orders/:id', type: :request do
           headers: authorization_headers
     end
 
-    it {
-      expect(response).to have_http_status 201
-    }
+    it { expect(response).to have_http_status 201 }
 
     it 'is expected to have product data in "item"' do
-      expect(JSON.parse(response.body)['items'][1]['title']).to eq 'Vesuvio'
+      expect(
+        JSON.parse(response.body)['order']['items'][1]['title']
+      ).to eq 'Vesuvio'
     end
   end
 end
